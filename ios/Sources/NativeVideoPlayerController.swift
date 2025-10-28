@@ -74,10 +74,10 @@ class NativeVideoPlayerController: NSObject, NativeVideoPlayerHostApi {
         let durationInMilliseconds = duration.isValid 
             ? duration.seconds * 1000 
             : 0
-        
+        let size = videoTrack.naturalSize.applying(videoTrack.preferredTransform)
         return VideoInfo(
-            height: Int64(videoTrack.naturalSize.height),
-            width: Int64(videoTrack.naturalSize.width),
+            height: Int64(size.height),
+            width: Int64(size.width),
             durationInMilliseconds: Int64(durationInMilliseconds)
         )
     }
